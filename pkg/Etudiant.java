@@ -15,12 +15,16 @@ public class Etudiant extends Ecole{
     public Thread ThreadEtudiant = new Thread(new Runnable() {
         @Override
         public void run() {
-            if (Instituation.NumSeance != -0) {
-                System.out.println(Signature());
-                System.out.println(AfficherNum(Instituation.NumSeance));
-                System.out.println(AfficherSeance(Instituation.SeanceType));
+            int state = 3;
+            while (state != 0) {
+                if (Instituation.NumSeance != -1) {
+                    System.out.println(Signature());
+                    System.out.println(AfficherNum(Instituation.NumSeance));
+                    System.out.println(AfficherSeance(Instituation.SeanceType));
+                    state = 0;
+                }
+                state--;
             }
-            
         }
     });
 }
