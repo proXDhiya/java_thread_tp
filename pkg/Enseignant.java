@@ -28,21 +28,11 @@ public class Enseignant extends Ecole{
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                int state = 5;
-                while(state != 0) {
-                    try {
-                        sem2.acquire();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
+                int state = 1;
+                do {
                     // critical section
-                    if (NumSeance != -1)
-                        SeanceType = AvoirSeance(NumSeance);
-                    
-                    sem3.release();
-                    state--;
-                }
+                    if (NumSeance != -1) SeanceType = AvoirSeance(NumSeance);
+                }while(state++ != 5);
             }
         });
         return t;

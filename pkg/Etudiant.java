@@ -21,23 +21,14 @@ public class Etudiant extends Ecole{
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                int state = 3;
-                while (state != 0) {
-                    try {
-                        sem3.acquire();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
+                int state = 1;
+                do {
                     if (NumSeance != -1) {
                         System.out.println(Signature());
                         System.out.println("Num Seance : " + AfficherNum(NumSeance));
                         System.out.println("Seance Type : " + AfficherSeance(SeanceType));
                     }
-
-                    sem1.release();
-                    state--;
-                }
+                }while(state++ != 3);
             }
         });        
         return t;

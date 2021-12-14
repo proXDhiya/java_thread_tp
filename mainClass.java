@@ -10,11 +10,9 @@ public class mainClass {
 
         // Create a new object from class Enseignant
         Enseignant enseignant = new Enseignant();
-        
-        secretaire.ThreadSecretaire().start();
+
         enseignant.ThreadEnseignant().start();
         etudiant.ThreadEtudiant().start();
-        
-        return;
+        secretaire.ThreadSecretaire().start();   
     }
 }

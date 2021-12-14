@@ -21,21 +21,12 @@ public class Secretaire extends Ecole{
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                int state = 5;
-                while(state != 0) {
-                    try {
-                        sem1.acquire();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
+                int state = 1;
+                do {
                     // critical section
                     System.out.println(Signature());
                     NumSeance = AvoirNum();
-
-                    sem2.release();
-                    state--;
-                }
+                } while(state++ != 5);
             }
         });
         return t;
