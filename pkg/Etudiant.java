@@ -11,20 +11,28 @@ public class Etudiant extends Ecole{
     public String AvoirSeance(int num) { return ""; }
 
 
+    // Etudiant ovrride signature
+    @Override
+    public String Signature() { return "Etudiant Signature"; }
+
+
     // Thread logic
-    public Thread ThreadEtudiant = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            int state = 3;
-            while (state != 0) {
-                if (Instituation.NumSeance != -1) {
-                    System.out.println(Signature());
-                    System.out.println(AfficherNum(Instituation.NumSeance));
-                    System.out.println(AfficherSeance(Instituation.SeanceType));
-                    state = 0;
+    public Thread ThreadEtudiant() {
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int state = 3;
+                while (state != 0) {
+                    if (NumSeance != -1) {
+                        System.out.println(Signature());
+                        System.out.println(AfficherNum(NumSeance));
+                        System.out.println(AfficherSeance(SeanceType));
+                        state = 1;
+                    }
+                    state--;
                 }
-                state--;
             }
-        }
-    });
+        });
+        return t;
+    }
 }
