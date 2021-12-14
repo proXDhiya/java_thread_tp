@@ -25,9 +25,8 @@ public class Etudiant extends Ecole{
                 while (state != 0) {
                     if (NumSeance != -1) {
                         System.out.println(Signature());
-                        System.out.println(AfficherNum(NumSeance));
-                        System.out.println(AfficherSeance(SeanceType));
-                        state = 1;
+                        System.out.println("Num Seance : " + AfficherNum(NumSeance));
+                        System.out.println("Seance Type : " + AfficherSeance(SeanceType));
                     }
                     state--;
                 }
