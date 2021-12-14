@@ -23,8 +23,17 @@ public class Secretaire extends Ecole{
             public void run() {
                 int state = 5;
                 while(state != 0) {
+                    try {
+                        sem1.acquire();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    // critical section
                     System.out.println(Signature());
                     NumSeance = AvoirNum();
+
+                    sem2.release();
                     state--;
                 }
             }

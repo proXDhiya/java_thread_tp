@@ -12,8 +12,8 @@ public class mainClass {
         Enseignant enseignant = new Enseignant();
         
         secretaire.ThreadSecretaire().start();
-        etudiant.ThreadEtudiant().start();
         enseignant.ThreadEnseignant().start();
+        etudiant.ThreadEtudiant().start();
         
         return;
     }

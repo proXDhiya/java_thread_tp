@@ -23,15 +23,23 @@ public class Etudiant extends Ecole{
             public void run() {
                 int state = 3;
                 while (state != 0) {
+                    try {
+                        sem3.acquire();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
                     if (NumSeance != -1) {
                         System.out.println(Signature());
                         System.out.println("Num Seance : " + AfficherNum(NumSeance));
                         System.out.println("Seance Type : " + AfficherSeance(SeanceType));
                     }
+
+                    sem1.release();
                     state--;
                 }
             }
-        });
+        });        
         return t;
     }
 }

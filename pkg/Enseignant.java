@@ -30,8 +30,17 @@ public class Enseignant extends Ecole{
             public void run() {
                 int state = 5;
                 while(state != 0) {
+                    try {
+                        sem2.acquire();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    // critical section
                     if (NumSeance != -1)
                         SeanceType = AvoirSeance(NumSeance);
+                    
+                    sem3.release();
                     state--;
                 }
             }
