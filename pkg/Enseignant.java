@@ -8,7 +8,12 @@ public class Enseignant extends Ecole{
 
     // Ecole class
     public int AvoirNum() { return 0; }
-    public String AvoirSeance(int num) { return ""; }
+    public String AvoirSeance(int num) {
+        if (num == 1) return "Seance course";
+        if (num == 2) return "Seance TD";
+        if (num == 3) return "Seance TP";
+        return "Error";
+    }
 
 
     // Override Signature method
@@ -23,10 +28,14 @@ public class Enseignant extends Ecole{
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                if (NumSeance != -1)
-                    AvoirSeance(NumSeance);
-                if (NumSeance == 1)
-                    ;
+                int state = 5;
+                while(state != 0) {
+                    if (NumSeance != -1)
+                        SeanceType = AvoirSeance(NumSeance);
+                    if (SeanceType != "Error")
+                        state = 1;
+                    state--;
+                }
             }
         });
         return t;
